@@ -164,8 +164,6 @@ BEGIN
 	INSERT INTO lottery.permissions(
             id, description)
     VALUES (1, 'Financial Transactions'),(2,'Lottery Games');
-    
-    COMMIT;
 
 END$$;
    
