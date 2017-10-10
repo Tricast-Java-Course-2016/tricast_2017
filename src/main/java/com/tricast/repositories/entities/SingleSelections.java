@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "SINGLESELECTIONS")
-public class SingleSelection implements Serializable {
+public class SingleSelections implements Serializable {
 
 	private static final long serialVersionUID = -3370075957769037307L;
 
@@ -65,7 +65,7 @@ public class SingleSelection implements Serializable {
 	public void setLotteryTicketid(Integer lotteryTicketid) {
 		this.lotteryTicketid = lotteryTicketid;
 	}
-	
+
 	public Integer getPrizeLevelid() {
 		return prizeLevelid;
 	}
@@ -74,9 +74,9 @@ public class SingleSelection implements Serializable {
 		this.prizeLevelid = prizeLevelid;
 	}
 
-	
 
-	
+
+
 
 	@Override
 	public String toString() {

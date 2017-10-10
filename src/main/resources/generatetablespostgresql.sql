@@ -25,10 +25,11 @@ BEGIN
 	  dob INTEGER NOT NULL,
 	  country VARCHAR(60) NOT NULL,
 	  zipcode VARCHAR(8) NOT NULL,
+	  city VARCHAR(60) NOT NULL,
 	  address VARCHAR(100) NOT NULL,
 	  phoneNumber VARCHAR(30),
 	  email VARCHAR(30) NOT NULL,
-	  createDate DATE NOT NULL,
+	  createdDate DATE NOT NULL,
 	  CONSTRAINT PLAYERS_PK PRIMARY KEY (id)
 	  );
 	

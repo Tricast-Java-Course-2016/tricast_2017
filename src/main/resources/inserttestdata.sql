@@ -1,7 +1,7 @@
 INSERT INTO lottery.players(
             id, username, password, firstname, lastname, sex, identitycardnumber, 
-            dob, country, zipcode, address, phonenumber, email, createdate)
-    VALUES (1, 'player1', 'asd123', 'John', 'Little', 0, '123456ab', 123, 'UK', '1234', 'Long St.', '+12 123 123 123', 'e@mail.com', '2016-12-12'),(2,'player2','asd222','Krisztián','Kovács',1,'123456ac',321,'US','4321','Vertes St.','+12 123 321 321','es@gmail.com','2015-11-10');
+            dob, country, zipcode, city, address, phonenumber, email, createddate)
+    VALUES (1, 'player1', 'asd123', 'John', 'Little', 0, '123456ab', 123, 'UK', '1234', 'London', 'Long St.', '+12 123 123 123', 'e@mail.com', '2016-12-12'),(2,'player2','asd222','Krisztián','Kovács',1,'123456ac',321,'US','New York','4321','Vertes St.','+12 123 321 321','es@gmail.com','2015-11-10');
 
 INSERT INTO lottery.operators(
             id, username, password, firstname, lastname, sex, country, zipcode, 

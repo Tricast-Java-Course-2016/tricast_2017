@@ -6,13 +6,13 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.tricast.repositories.entities.LotteryTickets;
 
-				  
-public interface LotteryTicketsReposytory extends CrudRepository<LotteryTickets, Long>{
+
+public interface LotteryTicketsRepository extends CrudRepository<LotteryTickets, Long> {
 
 	@Override
 	List<LotteryTickets> findAll();
-	
+
 	LotteryTickets findById(Long id);
-	
-	
+
+
 }
