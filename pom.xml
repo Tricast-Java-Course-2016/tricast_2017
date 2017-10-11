@@ -4,12 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.tricast.web</groupId>
-	<artifactId>days-off-calendar</artifactId>
+	<artifactId>lottery</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>days-off-calendar</name>
-	<description>Days Off Calendar</description>
+	<name>lottery</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -111,4 +110,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<description>Lottery Application</description>
 </project>
