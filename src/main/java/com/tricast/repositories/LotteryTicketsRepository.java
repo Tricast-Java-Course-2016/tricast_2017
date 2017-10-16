@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.tricast.repositories.entities.LotteryTickets;
+import com.tricast.repositories.entities.LotteryTicket;
 
 
-public interface LotteryTicketsRepository extends CrudRepository<LotteryTickets, Long> {
+public interface LotteryTicketsRepository extends CrudRepository<LotteryTicket, Long> {
 
 	@Override
-	List<LotteryTickets> findAll();
+	List<LotteryTicket> findAll();
 
-	LotteryTickets findById(Long id);
+	LotteryTicket findById(Long id);
 
 
 }

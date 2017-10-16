@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tricast.managers.beans.SingleSelectionManager;
-import com.tricast.repositories.entities.SingleSelections;
+import com.tricast.managers.SingleSelectionManager;
+import com.tricast.repositories.entities.SingleSelection;
 
 @RestController
 @RequestMapping(path = "singleselection")
@@ -25,12 +25,12 @@ public class SingleSelectionController {
     }
 
     @GetMapping
-    public List<SingleSelections> findAll() {
+    public List<SingleSelection> findAll() {
         return singleSelectionManager.findAll();
     }
 
     @PostMapping
-    public SingleSelections create(@RequestBody SingleSelections singleSelection) {
+    public SingleSelection create(@RequestBody SingleSelection singleSelection) {
         return singleSelectionManager.create(singleSelection);
     }
 

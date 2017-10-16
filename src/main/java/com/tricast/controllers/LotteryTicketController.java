@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tricast.managers.beans.LotteryTicketManager;
-import com.tricast.repositories.entities.LotteryTickets;
+import com.tricast.managers.LotteryTicketManager;
+import com.tricast.repositories.entities.LotteryTicket;
 
 @RestController
 @RequestMapping(path = "lotteryticket")
@@ -25,12 +25,12 @@ public class LotteryTicketController {
     }
 
     @GetMapping
-    public List<LotteryTickets> findAll() {
+    public List<LotteryTicket> findAll() {
         return lotteryTicketManager.findAll();
     }
 
     @PostMapping
-    public LotteryTickets create(@RequestBody LotteryTickets lotteryTicket) {
+    public LotteryTicket create(@RequestBody LotteryTicket lotteryTicket) {
         return lotteryTicketManager.create(lotteryTicket);
     }
 

@@ -4,14 +4,14 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.tricast.repositories.entities.SingleSelections;
+import com.tricast.repositories.entities.SingleSelection;
 
-public interface SingleSelectionsRepository extends CrudRepository<SingleSelections, Long> {
+public interface SingleSelectionsRepository extends CrudRepository<SingleSelection, Long> {
 
 	@Override
-	List<SingleSelections> findAll();
+	List<SingleSelection> findAll();
 
-	SingleSelections findById(Long id);
+	SingleSelection findById(Long id);
 
 
 }

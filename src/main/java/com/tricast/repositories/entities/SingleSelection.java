@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "SINGLESELECTIONS")
-public class SingleSelections implements Serializable {
+public class SingleSelection implements Serializable {
 
 	private static final long serialVersionUID = -3370075957769037307L;
 

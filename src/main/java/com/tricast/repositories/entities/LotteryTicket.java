@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "LOTTERYTICKETS")
-public class LotteryTickets implements Serializable {
+public class LotteryTicket implements Serializable {
 
 	private static final long serialVersionUID = -3370075957769037307L;
 
@@ -120,7 +120,7 @@ public class LotteryTickets implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        LotteryTickets other = (LotteryTickets) obj;
+        LotteryTicket other = (LotteryTicket) obj;
         if (combinationNumbers == null) {
             if (other.combinationNumbers != null) {
                 return false;
