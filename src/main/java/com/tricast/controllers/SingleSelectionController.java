@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +35,21 @@ public class SingleSelectionController {
     @PostMapping
     public SingleSelection create(@RequestBody SingleSelection singleSelection) {
         return singleSelectionManager.create(singleSelection);
+    }
+
+    @GetMapping
+    public SingleSelection findById(@PathVariable long id) {
+        return singleSelectionManager.findById(id);
+    }
+
+    @PutMapping
+    public SingleSelection update(@RequestBody SingleSelection singleSelection) {
+        return singleSelectionManager.update(singleSelection);
+    }
+
+    @DeleteMapping
+    public void delete(@PathVariable long id) {
+        singleSelectionManager.deleteById(id);
     }
 
 }
