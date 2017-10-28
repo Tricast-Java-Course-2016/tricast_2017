@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+.navigation{
+    margin-top: 20px;
+}
+
+.main-content{
+    margin-top: 40px;
+}
+
+.text-left{
+    float: left;
+}
+
+.text-right{
+    float: right;
+}
+
+.btn{
+    width: 50%;
+}
+
+.btn-left{
+    float: left;
+}
+
+.btn-right{
+    float: right;
+}
+
+.grid{
+    width: 50%;
+    margin-top: 20px;
+}
+
+.bet-number{
+    width: 15%;
+    margin-right: 10px;
+}
+
+.submit{
+    margin-top: 30px;
+    width: 100%;
+}
