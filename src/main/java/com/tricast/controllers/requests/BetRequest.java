@@ -1,16 +1,12 @@
 package com.tricast.controllers.requests;
 
-import java.util.Date;
-
 public class BetRequest {
 
     private int lotteryGameId;
     private int lotteryDrawId;
     private int playerId;
-    private int stake;
     private String fixNumbers;
     private String combinationNumbers;
-    private Date createDate;
     private boolean oneWeek;
     public int getLotteryGameId() {
         return lotteryGameId;
@@ -35,13 +31,6 @@ public class BetRequest {
         this.playerId = playerId;
     }
 
-    public int getStake() {
-        return stake;
-    }
-
-    public void setStake(int stake) {
-        this.stake = stake;
-    }
 
     public String getFixNumbers() {
         return fixNumbers;
@@ -59,13 +48,6 @@ public class BetRequest {
         this.combinationNumbers = combinationNumbers;
     }
 
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
 
     public boolean isOneWeek() {
         return oneWeek;
@@ -79,13 +61,11 @@ public class BetRequest {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((combinationNumbers == null) ? 0 : combinationNumbers.hashCode());
-        result = prime * result + ((createDate == null) ? 0 : createDate.hashCode());
         result = prime * result + ((fixNumbers == null) ? 0 : fixNumbers.hashCode());
         result = prime * result + lotteryDrawId;
         result = prime * result + lotteryGameId;
         result = prime * result + (oneWeek ? 1231 : 1237);
         result = prime * result + playerId;
-        result = prime * result + stake;
         return result;
     }
     @Override
@@ -107,13 +87,6 @@ public class BetRequest {
         } else if (!combinationNumbers.equals(other.combinationNumbers)) {
             return false;
         }
-        if (createDate == null) {
-            if (other.createDate != null) {
-                return false;
-            }
-        } else if (!createDate.equals(other.createDate)) {
-            return false;
-        }
         if (fixNumbers == null) {
             if (other.fixNumbers != null) {
                 return false;
@@ -131,9 +104,6 @@ public class BetRequest {
             return false;
         }
         if (playerId != other.playerId) {
-            return false;
-        }
-        if (stake != other.stake) {
             return false;
         }
         return true;
