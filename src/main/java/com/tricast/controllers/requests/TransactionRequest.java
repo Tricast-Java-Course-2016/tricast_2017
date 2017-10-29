@@ -2,10 +2,9 @@ package com.tricast.controllers.requests;
 
 import java.util.Date;
 
-public class TransactionDepositOrWithdrawalRequest {
+public class TransactionRequest {
 
     private int playerId;
-    private String type;
     private Date start;
     private Date end;
 
@@ -15,14 +14,6 @@ public class TransactionDepositOrWithdrawalRequest {
 
     public void setPlayerId(int playerId) {
         this.playerId = playerId;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public Date getStart() {
@@ -48,7 +39,6 @@ public class TransactionDepositOrWithdrawalRequest {
         result = prime * result + ((end == null) ? 0 : end.hashCode());
         result = prime * result + playerId;
         result = prime * result + ((start == null) ? 0 : start.hashCode());
-        result = prime * result + ((type == null) ? 0 : type.hashCode());
         return result;
     }
 
@@ -63,7 +53,7 @@ public class TransactionDepositOrWithdrawalRequest {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        TransactionDepositOrWithdrawalRequest other = (TransactionDepositOrWithdrawalRequest) obj;
+        TransactionRequest other = (TransactionRequest) obj;
         if (end == null) {
             if (other.end != null) {
                 return false;
@@ -81,15 +71,7 @@ public class TransactionDepositOrWithdrawalRequest {
         } else if (!start.equals(other.start)) {
             return false;
         }
-        if (type == null) {
-            if (other.type != null) {
-                return false;
-            }
-        } else if (!type.equals(other.type)) {
-            return false;
-        }
         return true;
     }
-
 
 }
