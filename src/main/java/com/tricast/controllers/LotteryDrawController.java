@@ -37,8 +37,8 @@ public class LotteryDrawController {
         return lotteryDrawManager.create(lotteryTicket);
     }
 
-    @GetMapping
-    public LotteryDraw findById(@PathVariable long id) {
+    @GetMapping("/{id}")
+    public LotteryDraw findById(@PathVariable("id") long id) {
         return lotteryDrawManager.findById(id);
     }
 
