@@ -37,8 +37,8 @@ public class OperatorController {
         return operatorManager.create(player);
     }
 
-    @GetMapping
-    public Operator findById(@PathVariable long id) {
+    @GetMapping("/{id}")
+    public Operator findById(@PathVariable("id") long id) {
         return operatorManager.findById(id);
     }
 

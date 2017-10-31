@@ -42,8 +42,8 @@ public class LotteryGameController {
         return lotteryGameManager.update(lotteryGame);
     }
 
-    @GetMapping
-    public LotteryGame findById(@PathVariable long id) {
+    @GetMapping("/{id}")
+    public LotteryGame findById(@PathVariable("id") long id) {
         return lotteryGameManager.findById(id);
     }
 

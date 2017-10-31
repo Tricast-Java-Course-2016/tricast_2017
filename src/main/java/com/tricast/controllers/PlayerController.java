@@ -37,8 +37,8 @@ public class PlayerController {
         return playerManager.create(player);
     }
 
-    @GetMapping
-    public Player findById(@PathVariable long id) {
+    @GetMapping("/{id}")
+    public Player findById(@PathVariable("id") long id) {
         return playerManager.findById(id);
     }
 

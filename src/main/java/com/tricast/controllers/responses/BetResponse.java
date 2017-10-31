@@ -1,7 +1,8 @@
 package com.tricast.controllers.responses;
 
-public class BetResponse { // átnevezni
+public class BetResponse { // átnevezni - BetBasicResponse
 
+    // private List<LotteryGameBasicInfo> lotteryGames;
     private int lotteryGameId; // from lottery games
     private int lotteryDrawId; // from lottery draws
     private String description; // from lottery games

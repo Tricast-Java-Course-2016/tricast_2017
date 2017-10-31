@@ -2,11 +2,11 @@ package com.tricast.controllers.requests;
 
 public class BetRequest {
 
-    private int lotteryGameId;
+    private int lotteryGameId; // ez nem szükséges, a drawId elég
     private int lotteryDrawId;
     private int playerId;
-    private String fixNumbers;
-    private String combinationNumbers;
+    private String fixNumbers; // List<Integer>
+    private String combinationNumbers; // List<Integer>
     private boolean oneWeek;
     public int getLotteryGameId() {
         return lotteryGameId;

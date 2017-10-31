@@ -37,8 +37,8 @@ public class LotteryTicketController {
         return lotteryTicketManager.create(lotteryTicket);
     }
 
-    @GetMapping
-    public LotteryTicket findById(@PathVariable long id) {
+    @GetMapping("/{id}")
+    public LotteryTicket findById(@PathVariable("id") long id) {
         return lotteryTicketManager.findById(id);
     }
 
@@ -51,6 +51,16 @@ public class LotteryTicketController {
     public void delete(@PathVariable long id) {
         lotteryTicketManager.deleteById(id);
     }
+
+    // @GetMapping("/{lotteryGameId}")
+    // public BetBasicResponse getBetBasicResponse(@PathVariable("lotteryGameId") long lotteryGameId) {
+    // return lotteryTicketManager.getBetBasicResponse(id);
+    // }
+
+    // @PostMapping("/placebet")
+    // public LotteryTicketDetailsResponse placeBet(@RequestBody BetRequest betRequest) {
+    // return lotteryTicketManager.placeBet(betRequest);
+    // }
 
 }
 

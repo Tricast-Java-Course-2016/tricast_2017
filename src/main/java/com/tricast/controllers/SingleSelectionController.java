@@ -37,8 +37,8 @@ public class SingleSelectionController {
         return singleSelectionManager.create(singleSelection);
     }
 
-    @GetMapping
-    public SingleSelection findById(@PathVariable long id) {
+    @GetMapping("/{id}")
+    public SingleSelection findById(@PathVariable("id") long id) {
         return singleSelectionManager.findById(id);
     }
 
