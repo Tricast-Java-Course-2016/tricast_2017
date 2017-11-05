@@ -2,6 +2,7 @@ package com.tricast.managers;
 
 import java.util.List;
 
+import com.tricast.controllers.responses.BetBasicResponse;
 import com.tricast.repositories.entities.LotteryTicket;
 
 public interface LotteryTicketManager {
@@ -15,5 +16,7 @@ public interface LotteryTicketManager {
     LotteryTicket update(LotteryTicket lotteryTicket);
 
     void deleteById(Long id);
+
+    BetBasicResponse getBetBasicResponse(long lotteryGameId);
 
 }
