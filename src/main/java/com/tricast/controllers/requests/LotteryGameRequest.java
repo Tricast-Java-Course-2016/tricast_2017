@@ -1,54 +1,16 @@
-package com.tricast.repositories.entities;
+package com.tricast.controllers.requests;
 
-import java.io.Serializable;
-import java.util.Date;
+public class LotteryGameRequest {
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "lotterygames")
-public class LotteryGame implements Serializable {
-
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 6652648022347822854L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@Column(name = "description")
 	private String description;
-
-	@Column(name = "basestake")
 	private Integer baseStake;
-
-	@Column(name = "gridsize")
 	private Integer gridSize;
-
-	@Column(name = "numbersdrawn")
 	private Integer numbersDrawn;
-
-	@Column(name = "nrofgrids")
 	private Integer nrOfGrids;
-
-	@Column(name = "minnroffox")
 	private Integer minNrOfFix;
-
-	@Column(name = "maxnroffix")
 	private Integer maxNrOfFix;
-
-	@Column(name = "maxnrofcombination")
 	private Integer maxNrOfCombination;
-
-	@Column(name = "createdate")
-	private Date createdDate;
 
 	public Long getId() {
 		return id;
@@ -122,20 +84,11 @@ public class LotteryGame implements Serializable {
 		this.maxNrOfCombination = maxNrOfCombination;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((baseStake == null) ? 0 : baseStake.hashCode());
-		result = prime * result + ((createdDate == null) ? 0 : createdDate.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((gridSize == null) ? 0 : gridSize.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -158,19 +111,12 @@ public class LotteryGame implements Serializable {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		LotteryGame other = (LotteryGame) obj;
+		LotteryGameRequest other = (LotteryGameRequest) obj;
 		if (baseStake == null) {
 			if (other.baseStake != null) {
 				return false;
 			}
 		} else if (!baseStake.equals(other.baseStake)) {
-			return false;
-		}
-		if (createdDate == null) {
-			if (other.createdDate != null) {
-				return false;
-			}
-		} else if (!createdDate.equals(other.createdDate)) {
 			return false;
 		}
 		if (description == null) {
@@ -236,8 +182,7 @@ public class LotteryGame implements Serializable {
 	public String toString() {
 		return "LotteryGame [id=" + id + ", description=" + description + ", baseStake=" + baseStake + ", gridSize="
 				+ gridSize + ", numbersDrawn=" + numbersDrawn + ", nrOfGrids=" + nrOfGrids + ", minNrOfFox="
-				+ minNrOfFix + ", maxNrOfFix=" + maxNrOfFix + ", maxNrOfCombination=" + maxNrOfCombination
-				+ ", createdDate=" + createdDate + "]";
+				+ minNrOfFix + ", maxNrOfFix=" + maxNrOfFix + ", maxNrOfCombination=" + maxNrOfCombination + "]";
 	}
 
 }

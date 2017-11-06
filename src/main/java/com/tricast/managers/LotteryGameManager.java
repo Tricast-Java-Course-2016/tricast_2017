@@ -1,7 +1,9 @@
 package com.tricast.managers;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import com.tricast.controllers.requests.LotteryGameRequest;
 import com.tricast.repositories.entities.LotteryGame;
 
 public interface LotteryGameManager {
@@ -10,9 +12,9 @@ public interface LotteryGameManager {
 
     LotteryGame findById(Long id);
 
-    LotteryGame create(LotteryGame LotteryGame);
+    LotteryGame create(LotteryGame lotteryGame);
 
-    LotteryGame update(LotteryGame LotteryGame);
+    LotteryGame update(LotteryGameRequest lotteryGame) throws SQLException;
 
     void deleteById(Long id);
 

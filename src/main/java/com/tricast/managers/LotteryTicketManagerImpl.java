@@ -70,7 +70,7 @@ public class LotteryTicketManagerImpl implements LotteryTicketManager {
         betBasicResponse.setGridSize(lotteryGame.getGridSize());
         betBasicResponse.setNumbersDrawn(lotteryGame.getNumbersDrawn());
         betBasicResponse.setNrOfGrids(lotteryGame.getNrOfGrids());
-        betBasicResponse.setMinNrOfFox(lotteryGame.getMinNrOfFox());
+        betBasicResponse.setMinNrOfFox(lotteryGame.getMinNrOfFix());
         betBasicResponse.setMaxNrOfFix(lotteryGame.getMaxNrOfFix());
         betBasicResponse.setMaxNrOfCombination(lotteryGame.getMaxNrOfCombination());
         betBasicResponse.setYear(lotteryDraw.getYear());
