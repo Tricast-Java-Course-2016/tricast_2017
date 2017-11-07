@@ -10,8 +10,13 @@
   <h1>Forduló szerkesztése</h1>
   <form action="" class="drawform">
 	<table class="table-form">
-	<tr><td>Nyerő számok: <input type="text" name="winningNumbers" class="txtBox"/></td></tr>
-	<tr><td>Nyeremény százalékok: <input type="text" name="winningPercentages" class="txtBox" /></td></tr>
+	<tr>
+		<td>Nyerő számok:</td> <div class="winningNumbers"><td><input type="number" name="winningNumber" min="1" max="90" id="winningNumber"></td></div>
+	</tr>
+	<tr>
+		<td>Nyeremény százalékok:</td> 
+		<div class="winnngPercentages"><td><input type="number" name="winningPercentage" min="0" max="90" id="winningPercentage"></td></div>
+	</tr>
 	<tr><td>Aktuális nyerményalap: <label class="winningAmountlabel" id="winningAmountlabel">nyereményalap</label></td></tr>
 	<tr><td class="td-btn"><input type="button" value="Nyeremény kiosztása" class="btn"></td>
 	<td class="td-btn"><input type="button" value="Módosítás" class="btn"></td>
