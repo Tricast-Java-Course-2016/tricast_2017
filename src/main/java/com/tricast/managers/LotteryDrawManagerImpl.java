@@ -72,7 +72,7 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
         LotteryDrawResponse result = new LotteryDrawResponse();
         int tickets = 0;
 
-        // kéne egy ticket lista ahol a draw id == id
+        // kéneee egy ticket lista ahol a draw id == id
         // singleSelectionManagerImpl.NumberOfSsByTicket(ticket id) minden ticketre a listában
         List<LotteryTicket> ticketlist = lotteryTicketsRepository.findAll();
 
