@@ -1,58 +1,45 @@
 package com.tricast.controllers.requests;
 
+import java.util.List;
+
 public class BetRequest {
 
-    private int lotteryGameId; // ez nem szükséges, a drawId elég
     private int lotteryDrawId;
     private int playerId;
-    private String fixNumbers; // List<Integer>
-    private String combinationNumbers; // List<Integer>
+    private List<Integer> fixNumbers;
+    private List<Integer> combinationNumbers;
     private boolean oneWeek;
-    public int getLotteryGameId() {
-        return lotteryGameId;
-    }
-    public void setLotteryGameId(int lotteryGameId) {
-        this.lotteryGameId = lotteryGameId;
-    }
-
     public int getLotteryDrawId() {
         return lotteryDrawId;
     }
-
     public void setLotteryDrawId(int lotteryDrawId) {
         this.lotteryDrawId = lotteryDrawId;
     }
-
     public int getPlayerId() {
         return playerId;
     }
-
     public void setPlayerId(int playerId) {
         this.playerId = playerId;
     }
 
-
-    public String getFixNumbers() {
+    public List<Integer> getFixNumbers() {
         return fixNumbers;
     }
 
-    public void setFixNumbers(String fixNumbers) {
+    public void setFixNumbers(List<Integer> fixNumbers) {
         this.fixNumbers = fixNumbers;
     }
 
-    public String getCombinationNumbers() {
+    public List<Integer> getCombinationNumbers() {
         return combinationNumbers;
     }
 
-    public void setCombinationNumbers(String combinationNumbers) {
+    public void setCombinationNumbers(List<Integer> combinationNumbers) {
         this.combinationNumbers = combinationNumbers;
     }
-
-
     public boolean isOneWeek() {
         return oneWeek;
     }
-
     public void setOneWeek(boolean oneWeek) {
         this.oneWeek = oneWeek;
     }
@@ -63,7 +50,6 @@ public class BetRequest {
         result = prime * result + ((combinationNumbers == null) ? 0 : combinationNumbers.hashCode());
         result = prime * result + ((fixNumbers == null) ? 0 : fixNumbers.hashCode());
         result = prime * result + lotteryDrawId;
-        result = prime * result + lotteryGameId;
         result = prime * result + (oneWeek ? 1231 : 1237);
         result = prime * result + playerId;
         return result;
@@ -97,9 +83,6 @@ public class BetRequest {
         if (lotteryDrawId != other.lotteryDrawId) {
             return false;
         }
-        if (lotteryGameId != other.lotteryGameId) {
-            return false;
-        }
         if (oneWeek != other.oneWeek) {
             return false;
         }
@@ -108,6 +91,7 @@ public class BetRequest {
         }
         return true;
     }
+
 
 
 }
