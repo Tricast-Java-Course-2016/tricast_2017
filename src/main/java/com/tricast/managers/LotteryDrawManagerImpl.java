@@ -82,7 +82,7 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
             }
 
         }
-        result.setWinningAmount(this.findById(id).getBaseStake() * tickets);
+        result.setWinningAmount(this.findById(id).getBaseStake() * tickets); // pullamount nem winning
 
         List<Integer> winningNumbers = new ArrayList<>();
         LotteryDraw lotteryDraw = findById(id);
