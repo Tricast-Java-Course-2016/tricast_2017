@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PRIZELEVELS")
-public class PrizeLevel implements Serializable {
+public class PrizeLevel implements Serializable, Comparable<PrizeLevel> {
 
     private static final long serialVersionUID = -3370075957769037307L;
 
@@ -64,6 +64,11 @@ public class PrizeLevel implements Serializable {
     public String toString() {
         return "PrizeLevel [id=" + id + ", lotterydrawid=" + lotterydrawid + ", winningpercentage=" + winningpercentage
                 + ", level=" + level + "]";
+    }
+
+    @Override
+    public int compareTo(PrizeLevel o) {
+        return this.getLevel().compareTo(o.getLevel());
     }
 
 }
