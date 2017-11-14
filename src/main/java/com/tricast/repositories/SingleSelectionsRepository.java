@@ -13,5 +13,7 @@ public interface SingleSelectionsRepository extends CrudRepository<SingleSelecti
 
 	SingleSelection findById(Long id);
 
+    List<SingleSelection> findByLotteryTicketId(Long lotteryTicketId);
+
 
 }

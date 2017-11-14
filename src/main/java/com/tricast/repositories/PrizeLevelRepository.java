@@ -12,4 +12,6 @@ public interface PrizeLevelRepository extends CrudRepository<PrizeLevel, Long> {
     List<PrizeLevel> findAll();
 
     PrizeLevel findById(Long id);
+
+    List<PrizeLevel> findByLotteryDrawId(Long lotteryDrawId);
 }
