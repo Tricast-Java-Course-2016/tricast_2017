@@ -1,8 +1,24 @@
 $(document).ready(function() {
 
+    bindListeners();
     loadLotteryGames();
 
 });
+
+function bindListeners() {
+    $('#editGame').click(function() {
+        var id = $("#lotteryGamesTable-body tr.info").attr('id');
+        window.location.href = "/lottery/sites/lotteryGameEdit.html?id=" + id;
+
+    });
+}
+
+function clickRowListener() {
+    $("#lotteryGamesTable-body tr").click(function() {
+        $(this).addClass('info').siblings().removeClass('info');
+    });
+
+}
 
 function loadLotteryGames() {
     sendAjax("GET", "/lottery/lotterygames", null, function(data) {
@@ -25,4 +41,6 @@ function displayGames(data) {
                         + '</td><td>' + data[i].maxNrOfCombination + '</td><td>' + data[i].createdDate + '</td></tr>');
 
     }
+
+    clickRowListener();
 }
