@@ -2,8 +2,12 @@ package com.tricast.managers;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,10 +23,12 @@ import com.tricast.repositories.LotteryDrawRepository;
 import com.tricast.repositories.LotteryTicketsRepository;
 import com.tricast.repositories.PrizeLevelRepository;
 import com.tricast.repositories.SingleSelectionsRepository;
+import com.tricast.repositories.TransactionRepository;
 import com.tricast.repositories.entities.LotteryDraw;
 import com.tricast.repositories.entities.LotteryTicket;
 import com.tricast.repositories.entities.PrizeLevel;
 import com.tricast.repositories.entities.SingleSelection;
+import com.tricast.repositories.entities.Transaction;
 
 @Service
 public class LotteryDrawManagerImpl implements LotteryDrawManager {
@@ -31,15 +37,17 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
     private LotteryTicketsRepository lotteryTicketsRepository;
     private SingleSelectionsRepository singleSelectionsRepository;
     private PrizeLevelRepository prizeLevelRepository;
+    private TransactionRepository transactionRepository;
 
     @Inject
     public LotteryDrawManagerImpl(LotteryDrawRepository LotteryDrawsRepository,
             LotteryTicketsRepository lotteryTicketsRepository, SingleSelectionsRepository singleSelectionsRepository,
-            PrizeLevelRepository prizeLevelRepository) {
+            PrizeLevelRepository prizeLevelRepository, TransactionRepository transactionRepository) {
         this.lotteryDrawRepository = LotteryDrawsRepository;
         this.lotteryTicketsRepository = lotteryTicketsRepository;
         this.singleSelectionsRepository = singleSelectionsRepository;
         this.prizeLevelRepository = prizeLevelRepository;
+        this.transactionRepository = transactionRepository;
     }
 
     @Override
@@ -138,7 +146,18 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
     public LotteryDrawResponse update(LotteryDrawEditRequest lotteryGame) {
 
         LotteryDraw lotteryDraw = lotteryDrawRepository.findById((long) lotteryGame.getLotteryDrawId());
-        lotteryDraw.setWinningNumbers(lotteryGame.getWinningNumbers());
+        lotteryDraw.setWinningNumbers("");
+        String[] numbersToSort = lotteryGame.getWinningNumbers().split(",");
+        Arrays.sort(numbersToSort, new Comparator<String>()
+        {
+            @Override
+            public int compare(String s1, String s2) {
+                return Integer.valueOf(s1).compareTo(Integer.valueOf(s2));
+            }
+        });
+        for (int i = 0; i < numbersToSort.length; i++) {
+            lotteryDraw.setWinningNumbers(lotteryDraw.getWinningNumbers() + numbersToSort[i].toString());
+        }
         // percentage set
         List<PrizeLevel> goodPrizeLevels = prizeLevelsForDrawId(lotteryGame.getLotteryDrawId());// adott drawid-s pl-ek
         Collections.sort(goodPrizeLevels);
@@ -161,7 +180,7 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
     }
 
     @Override
-    public LotteryDraw settle(long lotteryDrawId) {
+    public LotteryDraw settle(long lotteryDrawId) throws Exception {
         long pool = 0;
         // Number of winning selection per prize level number
         Map<Integer, Integer> winningSingleSelectionPerPrizeLevel = new HashMap<>();
@@ -173,20 +192,26 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
         Map<Long, Integer> prizeLevelNumberPerPrizeLevelId = new HashMap<>();
         // Prize level id by number
         Map<Integer, Long> prizeLevelIdPerPrizeLevelNumber = new HashMap<>();
+        // winning level of a singleselection stored in a map
+        Map<Long, Integer> winningLevelOfSingleSelection = new HashMap<>();
 
         // Load the draw to settle
         LotteryDraw lotteryDrawToSettle = lotteryDrawRepository.findById(lotteryDrawId);
         // Get the winning number
         String winningNumbers = lotteryDrawToSettle.getWinningNumbers();
         // TODO: Error handling if not available
-
+        if (winningNumbers.isEmpty()) {
+            throw new Exception("there are no winningnumbers");
+        }
         // Split the comma separated list into individual entries
         String[] winningNumberArray = winningNumbers.split(",");
 
         // Load all prize levels
         List<PrizeLevel> prizeLevels = prizeLevelRepository.findByLotteryDrawId(lotteryDrawId);
         // TODO: Error handling if list size is not correct
-
+        if (prizeLevels.size() != 4) {
+            throw new Exception("prizeLevels list size in not correct");
+        }
         // Filling up the prize level related maps
         for (PrizeLevel level : prizeLevels) {
             prizeLevelNumberPerPrizeLevelId.put(level.getId(), level.getLevel());
@@ -207,8 +232,9 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
 
             for (SingleSelection selectionForTicket : singleSelectionsForTicket) {
                 int levelNumber = 0;
-                // TODO: Compare the selection numbers with the winning number and determine the winning level number
-
+                // TODO:DONE: Compare the selection numbers with the winning number and determine the winning level number
+                levelNumber = compareWinningNumbersWithSingleSelections(winningNumberArray,selectionForTicket.getSelection());
+                winningLevelOfSingleSelection.put(selectionForTicket.getId(), levelNumber);
                 // Updating winning single selection by prize level map
                 winningSingleSelectionPerPrizeLevel.put(levelNumber,
                         winningSingleSelectionPerPrizeLevel.get(levelNumber) + 1);
@@ -247,10 +273,45 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
             unitaryWinAmountOnPrizeLevel.put(level.getLevel(), unitaryWinAmountForLevel.longValue());
         }
 
-        // TODO: Iterate through the ticket per single selection map, determine the total winnings for the ticket and
+        // TODO:DONE: Iterate through the ticket per single selection map, determine the total winnings for the ticket
+        // and
         // save a transaction for tickets where winnings > 0
+        int wonMoneyByTicket;
+        for (LotteryTicket ticket : lotteryTickets) {
+            wonMoneyByTicket = 0;
+            for(SingleSelection selection : singleSelectionsPerTicket.get(ticket.getId())) {
+                selection.setWinningAmount(unitaryWinAmountOnPrizeLevel
+                        .get(winningLevelOfSingleSelection.get(selection.getId())).intValue());
+                wonMoneyByTicket += selection.getWinningAmount();
+            }
+            if (wonMoneyByTicket > 0) {
+                createTransaction(wonMoneyByTicket, /* Integer operatorId */null, ticket.getPlayerid());
+            }
+        }
 
         return null;
     }
 
+    private void createTransaction(Integer amount, Integer operatorId, Integer playerId) {
+        Transaction transaction = new Transaction();
+        transaction.setAmount(amount);
+        transaction.setCreateDate(Date.valueOf(LocalDate.now()));
+        transaction.setOperatorId(operatorId);
+        transaction.setPlayerId(playerId);
+        transaction.setType("winning");
+        this.transactionRepository.save(transaction);
+    }
+
+    private int compareWinningNumbersWithSingleSelections(String[] winningNumberArray, String selectionNumbers) {
+        int level = 0;
+        String[] selectionNumberArray = selectionNumbers.split(",");
+        for (int i = 0; i < winningNumberArray.length; i++) {
+            for (int k = 0; k < winningNumberArray.length; k++) {
+                if (winningNumberArray[i].equals(selectionNumberArray[k])) {
+                    level++;
+                }
+            }
+        }
+        return level;
+    }
 }
