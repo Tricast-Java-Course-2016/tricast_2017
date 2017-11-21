@@ -30,7 +30,7 @@ public class Transaction implements Serializable {
     private Integer playerId;
 
     @Column(name = "operatorid")
-    private Integer operatorId;
+    private Long operatorId;
 
     @Column(name = "createdate")
     private Date createDate;
@@ -67,11 +67,11 @@ public class Transaction implements Serializable {
         this.playerId = playerId;
     }
 
-    public Integer getOperatorId() {
+    public Long getOperatorId() {
         return operatorId;
     }
 
-    public void setOperatorId(Integer operatorId) {
+    public void setOperatorId(Long operatorId) {
         this.operatorId = operatorId;
     }
 

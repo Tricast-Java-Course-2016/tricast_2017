@@ -20,7 +20,7 @@ public interface LotteryDrawManager {
 
     LotteryDrawResponse update(LotteryDrawEditRequest lotteryGame);
 
-    LotteryDraw settle(long lotteryDrawId) throws Exception;
+    LotteryDraw settle(long lotteryDrawId, long operatorId) throws Exception;
 
     void deleteById(Long id);
 

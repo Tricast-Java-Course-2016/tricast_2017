@@ -180,7 +180,7 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
     }
 
     @Override
-    public LotteryDraw settle(long lotteryDrawId) throws Exception {
+    public LotteryDraw settle(long lotteryDrawId, long operatorId) throws Exception {
         long pool = 0;
         // Number of winning selection per prize level number
         Map<Integer, Integer> winningSingleSelectionPerPrizeLevel = new HashMap<>();
@@ -208,8 +208,8 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
 
         // Load all prize levels
         List<PrizeLevel> prizeLevels = prizeLevelRepository.findByLotterydrawid(lotteryDrawId);
-        // TODO: Error handling if list size is not correct
-        if (prizeLevels.size() != 4) {
+
+        if (prizeLevels.size() != lotteryDrawToSettle.getNumbersDrawn()) {
             throw new Exception("prizeLevels list size in not correct");
         }
         // Filling up the prize level related maps
@@ -232,7 +232,7 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
 
             for (SingleSelection selectionForTicket : singleSelectionsForTicket) {
                 int levelNumber = 0;
-                // TODO:DONE: Compare the selection numbers with the winning number and determine the winning level number
+
                 levelNumber = compareWinningNumbersWithSingleSelections(winningNumberArray,selectionForTicket.getSelection());
                 winningLevelOfSingleSelection.put(selectionForTicket.getId(), levelNumber);
                 // Updating winning single selection by prize level map
@@ -285,14 +285,14 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
                 wonMoneyByTicket += selection.getWinningAmount();
             }
             if (wonMoneyByTicket > 0) {
-                createTransaction(wonMoneyByTicket, /* Integer operatorId */null, ticket.getPlayerid());
+                createTransaction(wonMoneyByTicket, operatorId, ticket.getPlayerid());
             }
         }
 
         return null;
     }
 
-    private void createTransaction(Integer amount, Integer operatorId, Integer playerId) {
+    private void createTransaction(Integer amount, long operatorId, Integer playerId) {
         Transaction transaction = new Transaction();
         transaction.setAmount(amount);
         transaction.setCreateDate(Date.valueOf(LocalDate.now()));

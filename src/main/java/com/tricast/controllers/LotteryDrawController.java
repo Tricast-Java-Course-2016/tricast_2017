@@ -46,7 +46,9 @@ public class LotteryDrawController {
 
     @PostMapping("/settle")
     public LotteryDraw settle(@RequestBody long lotteryDrawId) throws Exception {
-        return lotteryDrawManager.settle(lotteryDrawId);
+        // TODO: Get it from the frontend (request or header)
+        long operatorId = 1;
+        return lotteryDrawManager.settle(lotteryDrawId, operatorId);
     }
 
     @GetMapping("/detailsForEditDraw/{id}")
