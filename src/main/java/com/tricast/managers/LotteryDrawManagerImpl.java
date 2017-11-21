@@ -207,7 +207,7 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
         String[] winningNumberArray = winningNumbers.split(",");
 
         // Load all prize levels
-        List<PrizeLevel> prizeLevels = prizeLevelRepository.findByLotteryDrawId(lotteryDrawId);
+        List<PrizeLevel> prizeLevels = prizeLevelRepository.findByLotterydrawid(lotteryDrawId);
         // TODO: Error handling if list size is not correct
         if (prizeLevels.size() != 4) {
             throw new Exception("prizeLevels list size in not correct");
@@ -219,7 +219,7 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
         }
 
         // Load all tickets for settlement
-        List<LotteryTicket> lotteryTickets = lotteryTicketsRepository.findByLotteryDrawId(lotteryDrawId);
+        List<LotteryTicket> lotteryTickets = lotteryTicketsRepository.findByLotteryDrawid(lotteryDrawId);
 
         // Iterating through tickets to determine poolsize, and load selections
         for (LotteryTicket ticket : lotteryTickets) {
@@ -228,7 +228,7 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
 
             // Loading single selections for current ticket
             List<SingleSelection> singleSelectionsForTicket =
-                    singleSelectionsRepository.findByLotteryTicketId(ticket.getId());
+                    singleSelectionsRepository.findByLotteryTicketid(ticket.getId());
 
             for (SingleSelection selectionForTicket : singleSelectionsForTicket) {
                 int levelNumber = 0;

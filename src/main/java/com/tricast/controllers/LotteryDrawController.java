@@ -45,7 +45,7 @@ public class LotteryDrawController {
     }
 
     @PostMapping("/settle")
-    public LotteryDraw settle(@RequestBody long lotteryDrawId) {
+    public LotteryDraw settle(@RequestBody long lotteryDrawId) throws Exception {
         return lotteryDrawManager.settle(lotteryDrawId);
     }
 
