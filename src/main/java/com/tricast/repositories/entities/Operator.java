@@ -38,9 +38,6 @@ public class Operator implements Serializable {
     @Column(name = "sex")
     private Integer sex;
 
-    @Column(name = "identitycardnumber")
-    private String identityCardNumber;
-
     @Column(name = "country")
     private String country;
 
@@ -56,7 +53,7 @@ public class Operator implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "createddate")
+    @Column(name = "createdate")
     private Date createdDate;
 
     public Long getId() {
@@ -105,14 +102,6 @@ public class Operator implements Serializable {
 
     public void setSex(Integer sex) {
         this.sex = sex;
-    }
-
-    public String getIdentityCardNumber() {
-        return identityCardNumber;
-    }
-
-    public void setIdentityCardNumber(String identityCardNumber) {
-        this.identityCardNumber = identityCardNumber;
     }
 
     public String getCountry() {

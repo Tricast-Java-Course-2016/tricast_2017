@@ -17,7 +17,7 @@ BEGIN
 	  ( 
 	  id SERIAL NOT NULL, 
 	  userName VARCHAR(60) NOT NULL, 
-	  password VARCHAR(30) NOT NULL, 
+	  password VARCHAR(60) NOT NULL, 
 	  firstName VARCHAR(30) NOT NULL,
 	  lastName VARCHAR(30) NOT NULL,	  
 	  sex INTEGER NOT NULL, 
@@ -37,7 +37,7 @@ BEGIN
 	   (	
 	    id SERIAL NOT NULL, 
 	    userName VARCHAR(60) NOT NULL, 
-	    password VARCHAR(30) NOT NULL, 
+	    password VARCHAR(60) NOT NULL, 
   	    firstName VARCHAR(30) NOT NULL,
 	    lastName VARCHAR(30) NOT NULL,	  
 	    sex INTEGER NOT NULL,

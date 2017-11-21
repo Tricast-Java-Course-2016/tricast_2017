@@ -1,12 +1,14 @@
+-- password: asdf
 INSERT INTO lottery.players(
             id, username, password, firstname, lastname, sex, identitycardnumber, 
             dob, country, zipcode, city, address, phonenumber, email, createddate)
-    VALUES (1, 'player1', 'asd123', 'John', 'Little', 0, '123456ab', 123, 'UK', '1234', 'London', 'Long St.', '+12 123 123 123', 'e@mail.com', '2016-12-12'),(2,'player2','asd222','Krisztián','Kovács',1,'123456ac',321,'US','New York','4321','Vertes St.','+12 123 321 321','es@gmail.com','2015-11-10');
+    VALUES (1, 'player1', '$2a$10$v771qgBG7ng0npgoIhDfy.7T4CZFdmJtclx2yUzMAkmCZm3YpNKAa', 'John', 'Little', 0, '123456ab', 123, 'UK', '1234', 'London', 'Long St.', '+12 123 123 123', 'e@mail.com', '2016-12-12'),(2,'player2','asd222','Krisztián','Kovács',1,'123456ac',321,'US','New York','4321','Vertes St.','+12 123 321 321','es@gmail.com','2015-11-10');
 
+-- password: asdf
 INSERT INTO lottery.operators(
             id, username, password, firstname, lastname, sex, country, zipcode, 
             address, phonenumber, email, createdate)
-    VALUES (1, 'operator1', 'dsa321', 'Thomas', 'Engine', 0, 'USA', '1234', 
+    VALUES (1, 'operator1', '$2a$10$v771qgBG7ng0npgoIhDfy.7T4CZFdmJtclx2yUzMAkmCZm3YpNKAa', 'Thomas', 'Engine', 0, 'USA', '1234', 
             'Train Station', '-', 'ThomasThe@LittleGasEngine', '2016-12-31'),(2, 'operator2', 'dsa222', 'Tamas', 'Takacs', 0, 'Fr', '4321', 
             'Petofi Sandor', '-', 'TamasTakacs@gmail.com', '2017-02-11');
 

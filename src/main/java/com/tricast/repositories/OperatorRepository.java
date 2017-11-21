@@ -13,5 +13,5 @@ public interface OperatorRepository extends CrudRepository<Operator, Long> {
 
     Operator findById(Long id);
 
-
+    Operator findByUserName(String username);
 }

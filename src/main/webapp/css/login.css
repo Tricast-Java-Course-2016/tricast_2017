@@ -1,0 +1,11 @@
+.main-login-btn {
+	margin-bottom: 15px;
+}
+
+#failedPlayerLogin {
+	color: red;
+}
+
+#failedOperatorLogin {
+	color: red;
+}

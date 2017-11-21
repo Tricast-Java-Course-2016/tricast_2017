@@ -71,20 +71,19 @@ function getBetInfos() {
 
 
 
-oneWeek(){
+function oneWeek(){
     if($('#oneWeek').isSelected()){
         return true;
     } else {
         return false;
     }
-    }
 }
 
-fixNumbers(){
+function fixNumbers(){
   
     
 }
 
-combinationNumbers(){
+function combinationNumbers(){
     
 }

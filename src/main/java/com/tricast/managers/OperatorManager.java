@@ -1,8 +1,12 @@
 package com.tricast.managers;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import com.tricast.controllers.responses.OperatorResponse;
+import com.tricast.controllers.responses.PlayerResponse;
 import com.tricast.repositories.entities.Operator;
+import com.tricast.repositories.entities.Player;
 
 public interface OperatorManager {
 
@@ -16,4 +20,5 @@ public interface OperatorManager {
 
     void deleteById(Long id);
 
+    OperatorResponse login(String username, String password) throws SQLException;
 }
