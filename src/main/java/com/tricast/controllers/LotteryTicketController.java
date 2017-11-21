@@ -62,7 +62,7 @@ public class LotteryTicketController {
     }
 
 
-    @GetMapping("/{lotteryGameId}")
+    @GetMapping("/bet/{lotteryGameId}")
     public BetBasicResponse getBetBasicResponse(@PathVariable("lotteryGameId") long lotteryGameId) {
         return lotteryTicketManager.getBetBasicResponse(lotteryGameId);
     }

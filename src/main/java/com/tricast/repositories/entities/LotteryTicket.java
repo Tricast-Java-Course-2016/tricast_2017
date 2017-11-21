@@ -24,19 +24,19 @@ public class LotteryTicket implements Serializable {
 	@Column(name = "playerid")
 	private Integer playerid;
 
-	@Column(name = "lotteryDrawid")
+    @Column(name = "lotterydrawid")
 	private Integer lotteryDrawid;
 
 	@Column(name = "stake")
 	private Integer stake;
 
-	@Column(name = "fixNumbers")
+    @Column(name = "fixnumbers")
 	private String fixNumbers;
 
-	@Column(name = "combinationNumbers")
+    @Column(name = "combinationnumbers")
 	private String combinationNumbers;
 
-	@Column(name = "createDate")
+    @Column(name = "createdate")
 	private Date createDate;
 
 	public Long getId() {

@@ -13,6 +13,6 @@ public interface LotteryTicketsRepository extends CrudRepository<LotteryTicket, 
 
     LotteryTicket findById(Long id);
 
-    List<LotteryTicket> findByLotteryDrawId(Long lotteryDrawId);
+    List<LotteryTicket> findByLotteryDrawid(Long lotteryDrawId);
 
 }

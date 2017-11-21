@@ -62,7 +62,7 @@ public class LotteryDraw implements Serializable {
 	@JoinColumn(name = "lotterygameid")
 	private LotteryGame lotteryGame;
 
-	@Column(name = "createddate")
+    @Column(name = "createdate")
 	private Date createdDate;
 
 	public Long getId() {
@@ -200,83 +200,114 @@ public class LotteryDraw implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		if (this == obj) {
+            return true;
+        }
+		if (obj == null) {
+            return false;
+        }
+		if (getClass() != obj.getClass()) {
+            return false;
+        }
 		LotteryDraw other = (LotteryDraw) obj;
 		if (baseStake == null) {
-			if (other.baseStake != null)
-				return false;
-		} else if (!baseStake.equals(other.baseStake))
-			return false;
+			if (other.baseStake != null) {
+                return false;
+            }
+		} else if (!baseStake.equals(other.baseStake)) {
+            return false;
+        }
 		if (createdDate == null) {
-			if (other.createdDate != null)
-				return false;
-		} else if (!createdDate.equals(other.createdDate))
-			return false;
+			if (other.createdDate != null) {
+                return false;
+            }
+		} else if (!createdDate.equals(other.createdDate)) {
+            return false;
+        }
 		if (gridSize == null) {
-			if (other.gridSize != null)
-				return false;
-		} else if (!gridSize.equals(other.gridSize))
-			return false;
+			if (other.gridSize != null) {
+                return false;
+            }
+		} else if (!gridSize.equals(other.gridSize)) {
+            return false;
+        }
 		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
+			if (other.id != null) {
+                return false;
+            }
+		} else if (!id.equals(other.id)) {
+            return false;
+        }
 		if (lotteryGame == null) {
-			if (other.lotteryGame != null)
-				return false;
-		} else if (!lotteryGame.equals(other.lotteryGame))
-			return false;
+			if (other.lotteryGame != null) {
+                return false;
+            }
+		} else if (!lotteryGame.equals(other.lotteryGame)) {
+            return false;
+        }
 		if (maxNrOfCombination == null) {
-			if (other.maxNrOfCombination != null)
-				return false;
-		} else if (!maxNrOfCombination.equals(other.maxNrOfCombination))
-			return false;
+			if (other.maxNrOfCombination != null) {
+                return false;
+            }
+		} else if (!maxNrOfCombination.equals(other.maxNrOfCombination)) {
+            return false;
+        }
 		if (maxNrOfFix == null) {
-			if (other.maxNrOfFix != null)
-				return false;
-		} else if (!maxNrOfFix.equals(other.maxNrOfFix))
-			return false;
+			if (other.maxNrOfFix != null) {
+                return false;
+            }
+		} else if (!maxNrOfFix.equals(other.maxNrOfFix)) {
+            return false;
+        }
 		if (minNrOfFox == null) {
-			if (other.minNrOfFox != null)
-				return false;
-		} else if (!minNrOfFox.equals(other.minNrOfFox))
-			return false;
+			if (other.minNrOfFox != null) {
+                return false;
+            }
+		} else if (!minNrOfFox.equals(other.minNrOfFox)) {
+            return false;
+        }
 		if (nrOfGrids == null) {
-			if (other.nrOfGrids != null)
-				return false;
-		} else if (!nrOfGrids.equals(other.nrOfGrids))
-			return false;
+			if (other.nrOfGrids != null) {
+                return false;
+            }
+		} else if (!nrOfGrids.equals(other.nrOfGrids)) {
+            return false;
+        }
 		if (numbersDrawn == null) {
-			if (other.numbersDrawn != null)
-				return false;
-		} else if (!numbersDrawn.equals(other.numbersDrawn))
-			return false;
+			if (other.numbersDrawn != null) {
+                return false;
+            }
+		} else if (!numbersDrawn.equals(other.numbersDrawn)) {
+            return false;
+        }
 		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
-			return false;
+			if (other.status != null) {
+                return false;
+            }
+		} else if (!status.equals(other.status)) {
+            return false;
+        }
 		if (week == null) {
-			if (other.week != null)
-				return false;
-		} else if (!week.equals(other.week))
-			return false;
+			if (other.week != null) {
+                return false;
+            }
+		} else if (!week.equals(other.week)) {
+            return false;
+        }
 		if (winningNumbers == null) {
-			if (other.winningNumbers != null)
-				return false;
-		} else if (!winningNumbers.equals(other.winningNumbers))
-			return false;
+			if (other.winningNumbers != null) {
+                return false;
+            }
+		} else if (!winningNumbers.equals(other.winningNumbers)) {
+            return false;
+        }
 		if (year == null) {
-			if (other.year != null)
-				return false;
-		} else if (!year.equals(other.year))
-			return false;
+			if (other.year != null) {
+                return false;
+            }
+		} else if (!year.equals(other.year)) {
+            return false;
+        }
 		return true;
 	}
 
