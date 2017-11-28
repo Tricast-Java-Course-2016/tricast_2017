@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,7 @@ import com.tricast.repositories.entities.SingleSelection;
 import com.tricast.repositories.entities.Transaction;
 
 @Service
+@Transactional
 public class LotteryDrawManagerImpl implements LotteryDrawManager {
 
     private LotteryDrawRepository lotteryDrawRepository;
@@ -129,6 +131,7 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
         result.setWinningNumbers(workList);
         ticketlist.clear();
         workList.clear();
+        result.setNumbersDrawn(lotteryDraw.getNumbersDrawn());
 
         // percentage beállítása
         List<PrizeLevel> goodPrizeLevels = prizeLevelsForDrawId(id);
@@ -156,11 +159,23 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
             }
         });
         for (int i = 0; i < numbersToSort.length; i++) {
-            lotteryDraw.setWinningNumbers(lotteryDraw.getWinningNumbers() + numbersToSort[i].toString());
+            if (i == 0) {
+                lotteryDraw.setWinningNumbers(lotteryDraw.getWinningNumbers() + numbersToSort[i].toString());
+            } else {
+                lotteryDraw.setWinningNumbers(lotteryDraw.getWinningNumbers() + "," + numbersToSort[i].toString());
+            }
         }
         // percentage set
         List<PrizeLevel> goodPrizeLevels = prizeLevelsForDrawId(lotteryGame.getLotteryDrawId());// adott drawid-s pl-ek
         Collections.sort(goodPrizeLevels);
+        if (goodPrizeLevels.isEmpty()) {
+
+            goodPrizeLevels = new ArrayList<>();
+            for (int i = 0; i < lotteryDraw.getNumbersDrawn(); i++) {
+                goodPrizeLevels.add(new PrizeLevel());
+                goodPrizeLevels.get(i).setId((long) lotteryGame.getLotteryDrawId());
+            }
+        }
         // nyeremény százalékok integer listába tétele
         List<Integer> workList = new ArrayList<>();
         String numbers = lotteryGame.getWinningPercentage();
@@ -175,8 +190,8 @@ public class LotteryDrawManagerImpl implements LotteryDrawManager {
             goodPrizeLevels.get(i).setWinningpercentage(workList.get(i));
         }
         LotteryDrawResponse result = new LotteryDrawResponse();
-        // result készítés
-        return null;
+
+        return getDetailsForEditDraw(lotteryDraw.getId());
     }
 
     @Override

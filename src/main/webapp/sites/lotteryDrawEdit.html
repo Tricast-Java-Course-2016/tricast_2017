@@ -4,22 +4,28 @@
     <title>Forduló szerkesztése</title>
     <meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bet.css">
+    
+        
+    <script type="text/javascript" src="../js/lib/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="../js/general.js"></script>
+    <script type="text/javascript" src="../js/lotteryDrawGet.js"></script>
   </head>
   <body>
   <h1>Forduló szerkesztése</h1>
   <form action="" class="drawform">
-	<table class="table-form">
+	<table class="table">
 	<tr>
-		<td>Nyerő számok:</td> <div class="winningNumbers"><td><input type="number" name="winningNumber" min="1" max="90" id="winningNumber"></td></div>
+		<td id="winningNumbers-td">Nyerő számok:</td> <div class="winningNumbers"></div>
 	</tr>
 	<tr>
-		<td>Nyeremény százalékok:</td> 
-		<div class="winnngPercentages"><td><input type="number" name="winningPercentage" min="0" max="90" id="winningPercentage"></td></div>
+		<td id="winnngPercentages-td">Nyeremény százalékok:</td> 
+		<div class="winnngPercentages"></div>
 	</tr>
 	<tr><td>Aktuális nyerményalap: <label class="winningAmountlabel" id="winningAmountlabel">nyereményalap</label></td></tr>
 	<tr><td class="td-btn"><input type="button" value="Nyeremény kiosztása" class="btn"></td>
-	<td class="td-btn"><input type="button" value="Módosítás" class="btn"></td>
+	<td class="td-btn"><input type="button" value="Módosítás" class="btn" id="edit"></td>
 	<td class="td-btn"><input type="button" value="Törlés" class="btn"></td>
 	</tr>
 	</table>
